@@ -1,0 +1,20 @@
+// Code your design here
+module siso(clk,rst,in,q);
+  input clk,rst;
+  input in;
+  output reg q;
+  reg [3:0]qp;
+  always @(posedge clk)
+      begin
+        if (rst)
+          begin
+          q=0;
+          qp=0;
+          end
+        else
+          begin
+          qp={in,qp[3:1]};
+          q=qp[0];
+          end
+      end
+endmodule
